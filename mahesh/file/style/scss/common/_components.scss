@@ -1,0 +1,1405 @@
+@use "_functions"as *;
+@use "_breakpoints"as *;
+@use "_variables"as *;
+@use "_form"as *;
+
+
+//Section Padding - Horizontal//
+@mixin section {
+ width: 100%;
+ height: auto;
+ clear: both;
+ padding-left: $baseline;
+ padding-right: $baseline;
+ z-index: 1;
+
+ @include media-xs {
+  padding-left: $font-4-5;
+  padding-right: $font-4-5
+ }
+
+ @include media-sm {
+  padding-left: $xsSpacing;
+  padding-right: $xsSpacing;
+ }
+
+ @include media-md {
+  padding-left: $mdSpacing;
+  padding-right: $mdSpacing;
+ }
+
+ @include media-lg {
+  padding-left: $lgSpacing;
+  padding-right: $lgSpacing;
+ }
+
+ @include media-xl {
+  padding-left: $xlSpacing;
+  padding-right: $xlSpacing;
+ }
+}
+
+@mixin innerSection {
+ width: 100%;
+ max-width: $sectionMaxWidth;
+ margin: 0 auto;
+
+}
+
+//Section Padding - Vertical//
+@mixin sectionPadding {
+ padding-bottom: $xsSpacing;
+ padding-top: $xsSpacing;
+
+ @include media-sm {
+  padding-top: $smSpacing;
+  padding-bottom: $smSpacing;
+ }
+
+ @include media-md {
+  padding-top: $mdSpacing;
+  padding-bottom: $mdSpacing;
+ }
+
+ @include media-xl {
+  padding-top: $lgSpacing;
+  padding-bottom: $lgSpacing;
+ }
+
+}
+
+@mixin sectionPaddingTop {
+ padding-top: $xsSpacing;
+
+ @include media-sm {
+  padding-top: $smSpacing;
+ }
+
+ @include media-md {
+  padding-top: $mdSpacing;
+ }
+
+ @include media-xl {
+  padding-top: $lgSpacing;
+ }
+}
+
+@mixin sectionPaddingBottom {
+ padding-bottom: $xsSpacing;
+
+ @include media-sm {
+  padding-bottom: $smSpacing;
+ }
+
+ @include media-md {
+  padding-bottom: $mdSpacing;
+ }
+
+ @include media-xl {
+  padding-bottom: $lgSpacing;
+ }
+}
+
+@mixin cardBanner {
+ width: auto;
+ display: flex;
+ flex-wrap: wrap;
+ align-items: flex-start;
+ border-radius: $radius;
+
+ .content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: $baseline;
+
+  @include media-sm {
+   padding: $font-5-5;
+  }
+
+  @include media-md {
+   padding: $xsSpacing;
+  }
+
+  @include media-lg {
+   padding: $smSpacing;
+  }
+
+  .label {
+   font-size: $baseline;
+   font-weight: 600;
+   text-transform: uppercase;
+  }
+
+  .borderLabel {
+   font-size: $baseline;
+   font-weight: 600;
+  }
+
+  .title {
+   margin-top: $s2;
+   line-height: 1.2;
+  }
+
+  p {
+   display: block;
+   margin: $baseline 0;
+   font-weight: 500;
+   line-height: 1.5;
+
+  }
+
+  ul {
+   width: 100%;
+   margin: $baseline;
+
+   li {
+    font-weight: 300;
+    margin-bottom: .5rem;
+    line-height: 1.3;
+
+    &::before {
+     content: '';
+     position: absolute;
+     top: 5px;
+     left: -1rem;
+     width: 7px;
+     height: 7px;
+     border-radius: 10px;
+     background-color: $color1;
+    }
+   }
+  }
+
+  .actionBtnBorder {
+   @include btn;
+   @include mdBtn;
+   margin-top: 1rem;
+   background-color: transparent;
+   font-size: $baseline;
+   font-weight: 600;
+
+   &:hover {
+    color: $white;
+    transition: $transition1;
+   }
+  }
+ }
+
+ .media {
+  display: flex;
+
+  .widget {
+   margin: auto !important;
+   z-index: 2;
+  }
+
+  .element {
+   width: $font-4;
+
+   @include media-sm {
+    width: $font-3;
+   }
+
+   @include media-md {
+    width: $font-2;
+   }
+
+   @include media-lg {
+    width: $font-1;
+   }
+  }
+
+  img {
+   display: flex;
+  }
+
+  .bgImage {
+   width: 7rem;
+   object-fit: contain;
+   z-index: 2;
+  }
+ }
+}
+
+//Half Width Portrait Card Banner Styles//
+@mixin boxCardPortraitMd {
+ @include cardBanner;
+ flex-direction: column !important;
+ flex-wrap: nowrap !important;
+ overflow: hidden;
+
+ @include media-lg {
+  width: 49%;
+ }
+
+ @include media-lg {
+  margin-right: 2%;
+
+  &:nth-child(even) {
+   margin-right: 0;
+  }
+ }
+
+ .content {
+  text-align: left;
+  z-index: 2;
+
+  .borderLabel {
+   border-radius: 20px;
+   padding: .5rem $baseline;
+   background-color: rgba(255, 255, 255, 0.178);
+  }
+
+  .title {
+   line-height: 1.1;
+  }
+
+  p {}
+
+  ul {
+   width: 100%;
+   margin-top: $baseline;
+
+   li {
+    font-weight: 300;
+    margin-bottom: .5rem;
+    line-height: 1.3;
+
+    &::before {
+     content: '';
+     position: absolute;
+     top: 5px;
+     left: -1rem;
+     width: 7px;
+     height: 7px;
+     border-radius: 10px;
+    }
+   }
+  }
+
+  .actionBtnBorder {}
+ }
+
+ .media {
+  width: 100%;
+  padding: $s3;
+
+  .element {
+   position: absolute;
+   bottom: 0;
+   left: 50%;
+   margin-left: -150px;
+   width: 300px;
+  }
+
+  .bgImage {
+   z-index: 1;
+   width: 100%;
+   max-width: 450px;
+   margin: 0 auto;
+  }
+ }
+}
+
+.portraitBoxCardMd1 {
+ @include boxCardPortraitMd;
+ background-color: rgb(4, 12, 34);
+ border: 1px solid rgb(201, 238, 183);
+
+ .content {
+  .borderLabel {
+   color: $white;
+   font-weight: 300;
+  }
+
+  .title {
+   color: $white;
+  }
+
+  p {
+   color: $white;
+   font-weight: 300;
+  }
+
+  ul {
+   border-top: 1px solid rgb(68, 165, 112);
+
+   li {
+    color: $white;
+
+    &::before {
+     background-color: $color2;
+    }
+   }
+  }
+
+  .actionBtnBorder {
+   display: block;
+   margin-top: $baseline !important;
+   color: $white;
+   font-size: 300 !important;
+   border: 1px solid $color2;
+   background-color: transparent !important;
+   &:hover{
+    background-color: $color2 !important;
+   }
+  }
+ }
+}
+
+.portraitBoxCardMd2 {
+ @include boxCardPortraitMd;
+ background-color: $white;
+ border: 1px solid $borderGray;
+
+ .content {
+  .borderLabel {
+   color: $color1;
+   font-weight: 500;
+   background-color: rgb(224, 247, 224);
+  }
+
+  .title {
+   color: $black;
+  }
+
+  p {
+   color: $gray;
+   font-weight: 300;
+  }
+
+  ul {
+   border-top: 1px solid $borderGray;
+
+   li {
+    color: $gray;
+
+    &::before {
+     background-color: $color3;
+    }
+   }
+  }
+
+  .actionBtnBorder {
+   display: block;
+   margin-top: $baseline !important;
+   color: $black;
+   font-size: 300 !important;
+   border: 1px solid $color3;
+   background-color: transparent !important;
+   &:hover{
+    background-color: $color1 !important;
+   }
+  }
+ }
+}
+
+.portraitBoxCardCenterMd1 {
+ @include boxCardPortraitMd;
+ background-color: $color3;
+ border: 1px solid rgb(201, 238, 183);
+
+
+ .content {
+  text-align: center !important;
+
+  .borderLabel {
+   color: $white;
+   font-weight: 300;
+   margin: 0 auto;
+  }
+
+  .title {
+   color: $white;
+  }
+
+  p {
+   color: $white;
+   font-weight: 300;
+  }
+
+  ul {
+   border-top: 1px solid rgb(68, 165, 112);
+
+   li {
+    color: $white;
+
+    &::before {
+     background-color: $color2;
+    }
+   }
+  }
+
+  .actionBtnBorder {
+   display: block;
+   margin: 0 auto;
+   margin-top: $baseline !important;
+   color: $white;
+   font-size: 300 !important;
+   border: 1px solid $color2;
+   background-color: transparent !important;
+  }
+ }
+}
+
+.portraitBoxCardCenterMd2 {
+ @include boxCardPortraitMd;
+ background-color: $white;
+ border: 1px solid $borderGray;
+
+ .content {
+  text-align: center !important;
+
+  .borderLabel {
+   margin: 0 auto;
+   color: $color1;
+   font-weight: 500;
+   background-color: rgb(224, 247, 224);
+  }
+
+  .title {
+   color: $black;
+  }
+
+  p {
+   color: $gray;
+   font-weight: 300;
+  }
+
+  ul {
+   border-top: 1px solid $borderGray;
+
+   li {
+    color: $gray;
+
+    &::before {
+     background-color: $color3;
+    }
+   }
+  }
+
+  .actionBtnBorder {
+   display: block;
+   margin: 0 auto;
+   margin-top: $baseline !important;
+   color: $black;
+   font-size: 300 !important;
+   border: 1px solid $color3;
+   background-color: transparent !important;
+  }
+ }
+}
+
+//Half Width Card Banner Styles//
+@mixin boxCardMd {
+ @include cardBanner;
+ margin-bottom: $s3;
+ overflow: hidden;
+
+ @include media-lg {
+  width: 49%;
+ }
+
+ @include media-lg {
+  margin-right: 2%;
+
+  &:nth-child(even) {
+   margin-right: 0;
+  }
+ }
+
+ .content {
+  text-align: left;
+  z-index: 2;
+
+  .title {
+   line-height: 1.1;
+  }
+
+  p {}
+ }
+
+ .media {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  padding: $s3;
+
+  .element {
+   position: absolute;
+   bottom: 5%;
+   right: 5%;
+   width: 200px;
+   animation-name: elementAnimation;
+   animation-duration: 4s;
+   animation-timing-function: linear;
+   animation-iteration-count: infinite;
+  }
+
+  @keyframes elementAnimation {
+   0% {
+    transform: translateY(-20px) skew(10deg);
+   }
+
+   50% {
+    transform: translateY(0) skew(0);
+   }
+
+   100% {
+    transform: translateY(-20px) skew(10deg);
+   }
+  }
+
+  .bgImage {
+   position: absolute;
+   bottom: 10%;
+   right: 10%;
+   z-index: 1;
+   width: 70px;
+  }
+ }
+}
+
+.boxCardMd1 {
+ @include boxCardMd;
+ background-color: $color5;
+ border: 1px solid rgb(247, 232, 152);
+
+ .content {
+  .label {
+   color: $color2 !important;
+  }
+
+  .actionBtnBorder {
+   color: $black;
+   font-size: 300 !important;
+   border: 1px solid $color2;
+
+   &:hover {
+    color: $white;
+    background-color: $color2;
+   }
+  }
+ }
+
+ .media {
+  .bgImage {}
+ }
+}
+
+.boxCardMd2 {
+ @include boxCardMd;
+ background-color: $color4;
+ border: 1px solid rgb(188, 226, 187);
+
+ .label {
+  color: $color2;
+ }
+
+ .actionBtnBorder {
+  color: $black;
+  font-size: 300 !important;
+  border: 1px solid $color3;
+
+  &:hover {
+   color: $white;
+   background-color: $color3;
+  }
+ }
+
+ .media {
+  .bgImage {}
+ }
+}
+
+.boxCardMd3 {
+ @include boxCardMd;
+ background-color: $color8;
+ border: 1px solid rgb(225, 199, 241);
+
+ .label {
+  color: #7b54a8;
+ }
+
+ .actionBtnBorder {
+  color: $black;
+  font-size: 300 !important;
+  border: 1px solid #7b54a8;
+
+  &:hover {
+   color: $white;
+   background-color: #7b54a8;
+  }
+ }
+
+ .media {
+  .bgImage {}
+ }
+}
+
+.boxCardMd4 {
+ @include boxCardMd;
+ background-color: $color6;
+ border: 1px solid #f1c7c7;
+
+ .label {
+  color: #a85454;
+ }
+
+ .actionBtnBorder {
+  color: $black;
+  font-size: 300 !important;
+  border: 1px solid #a85e54;
+
+  &:hover {
+   color: $white;
+   background-color: #dd503d;
+  }
+ }
+
+ .media {
+  .bgImage {}
+ }
+}
+
+//Full Width Card Banner Styles//
+@mixin boxCardLg {
+ @include cardBanner;
+ display: flex;
+ flex-wrap: wrap;
+ overflow: hidden;
+ align-items: center;
+
+ .content {
+  width: 100%;
+  text-align: left;
+  order: 1;
+  @include media-lg {
+   width: 50%;
+   &:nth-child(even){
+    order: 2;
+   }
+  }
+
+  p {}
+ }
+
+ .media {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: $s3;
+  order: 2;
+  @include media-lg {
+   width: 50%;
+   &:nth-child(even){
+    order: 2;
+   }
+  }
+
+  .element {
+   position: absolute;
+   top: 0;
+   left: 50%;
+   margin-left: -125px;
+
+   width: 250px;
+  }
+
+  .bgImage {
+   width: 100%;
+   max-width: 350px;
+   margin: auto;
+   z-index: 1;
+  }
+  .tradingview-widget-container{
+    width: 100% !important;
+    @include media-lg{
+        max-width: 400px !important;
+    }
+    iframe{
+        width: 100% !important;
+    }
+  }
+ }
+}
+
+.boxCardLg1 {
+ @include boxCardLg;
+ background-color: transparent;
+
+ .label {
+  color: $color3;
+ }
+
+ .actionBtnBorder {
+  color: $black;
+  font-size: 300 !important;
+  border: 1px solid $color3;
+
+  &:hover {
+   color: $white;
+   background-color: $color3;
+  }
+ }
+}
+
+.boxCardLg2 {
+ @include boxCardLg;
+ background-color: $color4;
+ border: 1px solid rgb(201, 238, 183);
+
+ .label {
+  color: $color1;
+ }
+
+ .actionBtnBorder {
+  color: $white;
+  font-size: 300 !important;
+  border: 1px solid $color3;
+  background-color: $color3 !important;
+ }
+}
+
+.boxCardLg3 {
+ @include boxCardLg;
+ background-color: $color6;
+ border: 1px solid rgb(225, 199, 241);
+
+ .label {
+  color: #7b54a8;
+ }
+
+ .actionBtnBorder {
+  color: $white;
+  font-size: 300 !important;
+  border: 1px solid #7b54a8;
+  background-color: #7b54a8 !important;
+ }
+}
+
+//Content Media Styles//
+@mixin contentMedia {
+ @include cardBanner;
+ display: flex;
+ flex-wrap: wrap;
+ overflow: hidden;
+ align-items: center;
+ border-radius: 0;
+
+ .content {
+  width: 100%;
+  @include section;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+
+  text-align: left;
+
+  @include media-lg {
+   width: 50%;
+   min-height: 700px;
+  }
+
+  p {}
+
+  ul {
+   width: 100%;
+   margin-top: $baseline;
+   padding-left: $baseline;
+
+   li {
+    font-weight: 300;
+    margin-bottom: .5rem;
+    line-height: 1.3;
+
+    &::before {
+     content: '';
+     position: absolute;
+     top: 5px;
+     left: -1rem;
+     width: 7px;
+     height: 7px;
+     border-radius: 10px;
+    }
+   }
+  }
+
+  .actionBtnBorder {
+   margin-top: $baseline !important;
+   color: $white !important;
+   border: 1px solid $color2 !important;
+  }
+ }
+
+ .media {
+  width: 100%;
+  display: flex;
+  padding: $s3;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  @include media-lg {
+   width: 50%;
+   min-height: 600px;
+  }
+
+  .element {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   margin-top: -125px;
+   margin-left: -125px;
+
+   width: 250px;
+  }
+
+  .bgImage {
+   width: 100%;
+   max-width: 350px;
+   margin: auto;
+   z-index: 1;
+  }
+ }
+}
+
+.contentMedia1 {
+ @include contentMedia;
+
+ .content {
+  background-color: $black;
+
+
+  .label {
+   color: $color2;
+  }
+
+  .title {
+   color: $white;
+  }
+
+  p {
+   color: $borderGray;
+   font-weight: 300;
+  }
+
+  .actionBtnBorder {
+   color: $white;
+   font-size: 300 !important;
+   border: 1px solid $color2;
+   background-color: transparent !important;
+  }
+ }
+
+
+
+ .media {
+  background-color: $lightGray;
+
+
+ }
+}
+
+.contentMedia2 {
+ @include contentMedia;
+
+ .content {
+  background-color: $color3;
+  background: $gradient3;
+
+
+  .label {
+   color: $color2;
+  }
+
+  .title {
+   color: $white;
+  }
+
+  ul {
+   margin: 0 !important;
+   margin-top: $baseline !important;
+
+   li {
+    &::before {
+     background-color: $color2;
+    }
+   }
+  }
+
+  p {
+   color: $borderGray;
+   font-weight: 300;
+  }
+
+  .actionBtnBorder {
+   color: $white;
+   font-size: 300 !important;
+   border: 1px solid $color2;
+   background-color: transparent !important;
+  }
+ }
+
+
+
+ .media {
+  background-color: $lightGray;
+
+
+ }
+}
+
+//full Width Banner Styles//
+@mixin fullWidthBanner {
+ @include cardBanner;
+ display: flex;
+ flex-wrap: wrap;
+ overflow: hidden;
+ align-items: center;
+ border-radius: 0;
+ padding-top: $xsSpacing;
+ padding-bottom: $xsSpacing;
+
+ .content {
+  @include section;
+  width: 100%;
+  text-align: left;
+  padding-top: 0;
+  padding-bottom: 0;
+
+  @include media-lg {
+   width: 50%;
+  }
+
+  .label {}
+
+  p {}
+ }
+
+ .media {
+  width: 100%;
+  display: flex;
+  padding: $s3;
+
+  @include media-lg {
+   width: 50%;
+  }
+
+  .element {
+   position: absolute;
+   top: 0;
+   left: 20%;
+   width: 250px;
+
+   @include media-lg {
+    width: 400px;
+   }
+  }
+
+  .bgImage {
+   width: 100%;
+   max-width: 200px;
+   margin: auto;
+   z-index: 1;
+   animation-name: animation2;
+   animation-duration: 4s;
+   animation-timing-function: linear;
+   animation-iteration-count: infinite;
+
+   @include media-lg {
+    max-width: 300px;
+
+   }
+
+   @keyframes animation2 {
+    0% {
+     transform: translateY(-20px) skew(3deg);
+    }
+
+    50% {
+     transform: translateY(0) skew(0);
+    }
+
+    100% {
+     transform: translateY(-20px) skew(3deg);
+    }
+   }
+  }
+ }
+}
+
+.fullWidthBanner1 {
+ @include cardBanner;
+ @include fullWidthBanner;
+ color: $white;
+ background-color: $lightGray !important;
+ background: $gradient4;
+
+ .content {
+
+
+  .label {
+   color: $color2;
+  }
+
+  p {
+   font-weight: 300;
+  }
+
+  .actionBtnBorder {
+   @include btn1;
+   @include mdBtn;
+
+   &:hover {}
+  }
+ }
+}
+
+.fullWidthBanner2 {
+ @include cardBanner;
+ @include fullWidthBanner;
+ color: $white;
+ background-color: $color1 !important;
+ background: $gradient1;
+
+ .content {
+
+
+  .label {
+   color: $color2;
+  }
+
+  p {
+   font-weight: 300;
+  }
+
+  .actionBtnBorder {
+   @include btn3;
+   @include mdBtn;
+
+   &:hover {}
+  }
+ }
+}
+
+//full Width Image Banner Styles//
+@mixin imageBanner {
+ @include cardBanner;
+ @include section;
+ @include sectionPadding;
+ align-items: flex-start;
+ overflow: hidden;
+
+ .content {
+  width: 100%;
+  text-align: left;
+  z-index: 10;
+  padding: $font-4-5;
+  border-radius: $radius $radius 0 0;
+
+  @include media-lg {
+   width: 50%;
+   max-width: 450px;
+   margin-left: auto;
+   border-radius: $radius;
+   padding: $xsSpacing;
+  }
+
+  p {
+   font-weight: 300;
+  }
+ }
+
+ .media {
+  width: 100%;
+
+  @include media-lg {
+   @include section;
+   @include sectionPadding;
+   position: absolute;
+   top: 0;
+   left: 0;
+
+  }
+
+  .bgImage {
+   display: block;
+   width: 100%;
+   height: 100%;
+   min-height: 250px;
+   background-position: center;
+   background-size: cover;
+   background-repeat: no-repeat;
+   border-radius: 0 0 $radius $radius;
+
+   @include media-lg {
+    max-width: 80%;
+    min-height: 450px;
+    border-radius: $radius;
+   }
+  }
+ }
+}
+
+.imageBanner1 {
+ @include imageBanner;
+
+ .content {
+  background-color: $color3;
+  background: $gradient3;
+  color: $white;
+
+  .actionBtnBorder {
+   border: 2px solid $color2;
+
+   &:hover {
+    background-color: $color2;
+    transition: $transition1;
+   }
+  }
+ }
+}
+
+@mixin centerContent {
+ text-align: center;
+
+ .label {
+  color: $color3;
+  font-size: $fontSmall;
+  font-weight: 600;
+  text-transform: uppercase;
+ }
+
+ .title {
+  max-width: 1000px;
+  margin: 0 auto;
+  margin-top: $s2;
+  line-height: 1.2;
+ }
+
+ p {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  margin-top: .5rem;
+  display: block;
+
+
+  font-weight: 500;
+  line-height: 1.5;
+
+ }
+}
+
+.centerContent {
+ @include section;
+ @include sectionPadding;
+ @include centerContent;
+}
+
+//Box Banner Styles//
+@mixin boxBanner {
+ width: auto;
+ @include cardBanner;
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ width: 100%;
+
+ .media {
+  img {
+   width: 100%;
+   border-radius: 2vh;
+
+   @include media-lg {
+    width: 80%;
+   }
+  }
+ }
+
+ .content {
+  width: 70%;
+  height: 10%;
+  border-radius: 2vh;
+  background: $gradient3;
+  color: $white;
+
+  @include media-lg {
+   position: absolute;
+   top: 0;
+   right: 0;
+   width: 40%;
+   height: 85%;
+  }
+
+  .title {}
+
+  p {}
+
+  .actionBtnBorder {}
+ }
+}
+
+//card design//
+@mixin card-design {
+ width: 100%;
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: center;
+
+ .card {
+  width: 100%;
+  max-width: 350px;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  padding: $baseline;
+  text-align: center;
+  background-color: $lightGray;
+  border-bottom: 1px solid $borderGray;
+  cursor: pointer;
+
+  @include media-sm {
+   margin: 0 1%;
+   margin-bottom: $baseline;
+   padding: $font-4;
+   border: 1px solid $borderGray;
+   border-radius: .5rem;
+  }
+
+
+  .iconDiv {
+   width: 70px;
+   height: 50px;
+   display: block;
+   border-radius: .5rem;
+   margin: 0 auto;
+   margin-bottom: $baseline;
+   cursor: pointer;
+
+   @include media-md {
+    width: 90px;
+    height: 80px;
+   }
+
+   img {
+    cursor: pointer;
+   }
+  }
+
+  .title {
+   width: 100%;
+   text-align: center;
+   margin-top: $baseline;
+   color: $black;
+   font-weight: 700;
+   cursor: pointer;
+  }
+
+  p {
+   cursor: pointer;
+   margin-bottom: $baseline;
+
+  }
+
+  span,
+  a,
+  button {
+   @include btn1;
+   @include mdBtn;
+   margin: 0 auto;
+   margin-top: auto !important;
+   font-weight: 600;
+   cursor: pointer;
+
+  }
+ }
+}
+
+//table
+
+@mixin formSection{
+ 
+  background-color: $lightGray;
+.formSectionTrade{
+
+  @include section;
+ 
+  
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  width: 100%;
+  margin-bottom: $xsSpacing;
+  margin-right: $xsSpacing;
+  padding: $s3;
+  text-align: left;
+  
+ 
+
+ 
+
+  .heading {
+    margin: 0;
+    margin-bottom: $s2;
+    text-align: left;
+    font-size: $baseline;
+    font-weight: 400;
+    line-height: 1.3;
+  
+    @include media-lg {
+      font-size: $font-4;
+    }
+  }
+  #formDiv {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: $font-4;
+
+    .inputDiv {
+      display: flex;
+      align-items: flex-start;
+      flex-direction: column;
+      width: 100%;
+      margin-bottom: $baseline;
+      #services {
+        background-color: $black;
+        color: $borderGray;
+        cursor: pointer;
+        option {
+          @include media-lg {
+            font-size: $baseline;
+          }
+        }
+      }
+
+      label {
+        margin: $s1;
+        text-align: left;
+        font-size: 0.8rem;
+   
+        @include media-lg {
+          font-size: $baseline;
+        }
+      }
+      input,textarea {
+        padding: 0;
+        border: 1px solid $darkGray;
+        border-radius: 10px;
+
+      }
+    }
+  }
+
+}
+}

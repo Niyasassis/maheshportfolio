@@ -1,0 +1,41 @@
+/*Primary Colors*/
+$color1: #054942;
+$color2: #BE9D17;
+$color3: #247656;
+$color4:#EFFEF8;
+$color5:#FFFCEC;
+$color6: #F3F2FF;
+$color7: #51449c;
+$color8: #040c22;
+/*Secondary Colors*/
+$white: #ffffff;
+$lightGray: #f8f8ff;
+$borderGray: #ebedf3;
+$visibleGray: #e0e0e0;
+$textGray: #909294;
+$gray: #5d5e5f;
+$darkGray: #242323;
+$black: #1b1b1b;
+
+/*Form Colors*/
+$red: #ec4c4c;
+$green: #3cc274;
+$blue: #546bd4;
+$yellow: #f5a905;
+$fGray: #919191;
+$inputBorder:#eef0f77a;
+$inputColor1:#fbfcff;
+$inputColor2:#b4bfee;
+$inputColor3:#97aaff;
+$inputColor4:#8295ff;
+
+/*Gradients*/
+$gradient1:linear-gradient(to right top, #054942, #054b44, #054d45, #054f47, #055149, #05534b, #04554c, #04574e, #045950, #035b52, #035e54, #026056);
+$gradient2:linear-gradient(to right top, #efd24c, #f1d450, #f4d753, #f6d957, #f9dc5a, #fadd5a, #fcde5a, #fddf5a, #fddf57, #fedf53, #fede50, #ffde4c);
+$gradient3:linear-gradient(to right top, #247656, #247958, #247c5a, #247f5c, #24825e, #238560, #238961, #228c63, #219065, #1f9567, #1e9969, #1c9e6b);
+$gradient4: linear-gradient(to bottom, #1a1919, #1a1919, #1a1919, #1a1919, #1a1919);
+$gradient5: linear-gradient(to right bottom, #270d12, #270d12, #270d12, #270d12, #270d12, #270d12, #270e13, #270e13, #270f14, #271015, #271115, #271216);
+/*Transitions*/
+$transition1 : all .3s cubic-bezier(0, 0, .5, 1);
+$transition2 : 0.5s cubic-bezier(0.37, 0, 0.63, 1);
+$transition3 : 0.7s cubic-bezier(0.37, 0, 0.63, 1);

@@ -1,0 +1,602 @@
+@use "../common/_common" as *;
+
+//Wall Section//
+#wallSection {
+  background-color: $white;
+  overflow: hidden;
+  padding-top: $baseline;
+ 
+
+  @include media-lg {
+    padding-top: 0;
+    height: 100vh;
+  }
+  .contentDivIntro {
+    display: none !important;
+  }
+  .contentDiv {
+    @extend .videoBanner;
+    height: 90vh;
+    display: block;
+    text-align: left;
+    overflow: hidden;
+    @include media-lg{
+      height: 100%;
+    }
+
+    .content {
+      @include section;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      padding-bottom: $font-4;
+
+      .title {
+        margin: 0;
+        color: $color2;
+        font-family: $fontFamily1;
+        font-style: italic;
+        font-weight: 400;
+        text-shadow: 0px 3px 3px rgba(34, 34, 34, 0.37);
+        letter-spacing: -1px;
+
+        @include media-lg {
+          font-size: $font-xxl;
+        }
+
+        span {
+          display: block;
+          font-style: normal;
+        }
+      }
+
+      .subTitle {
+        margin-top: $font-5-5;
+        max-width: 600px;
+        color: $white;
+       
+        font-weight: 300;
+        line-height: 1.4;
+      }
+
+      .more {
+        @include btn1;
+        @include mdBtn;
+        display: block;
+        margin-top: $baseline;
+        color: $white;
+        font-family: $fontFamily;
+        font-weight: 300;
+        border-radius: $radius;
+        background-color: $color1;
+
+        &:hover {
+          color: $color1;
+        }
+      }
+    }
+  }
+
+  .videoBanner {
+    width: 100%;
+    padding-top: calc(1 / 1) * 100%;
+
+    @include media-sm {
+      padding-top: calc(9 / 16) * 100%;
+    }
+
+    @include media-lg {
+      padding-top: calc(7 / 16) * 100%;
+    }
+
+    video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      filter: grayscale(2);
+
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+
+      source {
+        width: 100%;
+      }
+    }
+
+    .content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+  }
+
+  .socialDiv {
+   
+    position: relative;
+    background: $gradient4;
+
+    @include media-md {
+      position: absolute;
+      top: 40%;
+      right: 2%;
+    }
+
+    .socialContainer {
+      position: relative;
+
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+
+      @include media-md {
+        flex-direction: column;
+      }
+
+      &::before{
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 0;
+        overflow: hidden;
+        font-size: $s2;
+        font-family: $fontFamily;
+        transition: $transition2;
+      }
+
+      .insta {
+        width: 50px;
+        height: 60px;
+        
+          content: "";
+          background: radial-gradient(
+            circle at 30% 107%,
+            #fdf497 0%,
+            #fdf497 5%,
+            #fd5949 45%,
+            #d6249f 60%,
+            #285aeb 90%
+          );
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          border-top: 4px solid #dc2743;
+          cursor: pointer;
+       
+          
+          
+
+    
+        
+     
+      }
+      .facebook {
+        width: 50px;
+        height: 60px;
+          content: "";
+          color: #1da1f2;
+          border-top: 4px solid #1da1f2;
+          cursor: pointer;
+      
+        
+
+     
+      }
+      .whatsapp{
+        width: 50px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+            content: "";
+            color: #250;
+            border-top: 4px solid #250;
+              cursor: pointer;
+        
+        
+ 
+
+      }
+    }
+  }
+
+  .socialIcons {
+    width: 50px;
+    padding: $s2;
+    cursor: pointer;
+
+  }
+}
+
+#aboutmeSection {
+  background: $gradient4;
+  color: $white;
+  .centerContent {
+    padding-bottom: 0;
+  }
+  .boxCardLg1 {
+    background-color: $gradient4;
+    .content{
+      .title{
+        color: $color2;
+        font-family: $fontFamily1;
+        font-style: italic;
+        font-weight: 400;
+        text-shadow: 0px 3px 3px rgba(34, 34, 34, 0.37);
+      }
+    }
+  }
+}
+
+//servicesSection//
+
+#seriviceSection{
+    @include centerContent;
+    
+    @include sectionPaddingBottom;
+    background: $gradient4;
+    color: $white;
+    .serviceCardSection{
+        @include card-design;
+    }
+}
+//testimonials
+
+#testiomonialSection {
+    overflow: hidden;
+    background: $gradient4;
+    .imgBg {
+      position: absolute;
+      right: -50px;
+      top: -100px;
+      width: 700px;
+      opacity: 0.2;
+    }
+    .insideSection {
+        
+     
+      width: 100%;
+      
+      #insideContainer {
+        @extend .insideSection;
+  
+        .heading {
+          max-width: 600px;
+          margin: 0 auto;
+          font-weight: 400;
+          line-height: 1.3;
+          color: $white;
+          text-align: center;
+          span {
+            font-weight: 700;
+          }
+        }
+  
+        #testimonialWrapper {
+          display: flex;
+          width: 100%;
+          margin-top: $xsSpacing;
+  
+          @include media-lg {
+            margin-top: $smSpacing;
+          }
+  
+          .testimonialCard {
+            width: 100%;
+            min-width: 100%;
+  
+            display: flex;
+            flex-direction: column;
+            padding-right: $font-4;
+            @include media-lg {
+              min-width: 50%;
+             
+            }
+  
+            .testimonialCardContents {
+              width: 100%;
+              height: 100%;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              padding: $font-4;
+              background-color: $white;
+              box-shadow: rgb(0 0 0 / 4%) 0px 3px 5px;
+              border: 1px solid $lightGray;
+              border-radius: 0.5rem;
+  
+              @include media-lg {
+                padding: $font-4 $font-2;
+              }
+  
+              .content {
+                width: 100%;
+                max-width: 600px;
+                text-align: left;
+                p {
+                  @include media-lg {
+                    color: $darkGray;
+                    font-size: $baseline;
+                    font-weight: 500;
+                    line-height: 1.6;
+                  }
+                }
+              }
+  
+              .profileSection {
+                display: flex;
+                flex-direction: column;
+                margin-top: $smSpacing;
+                @include media-lg {
+                  flex-direction: row;
+                }
+                .profileImgDiv {
+                  width: auto;
+                  margin-bottom: $baseline;
+  
+                  img {
+                    max-width: 100px;
+                    max-height: 80px;
+                    object-fit: contain;
+                  }
+                }
+                .profileTextDiv {
+                  text-align: left;
+                  @include media-lg {
+                    margin-left: $s2;
+                  }
+                  p{
+                    margin-top:0 ;
+                  }
+                }
+              }
+            }
+          }
+        }
+  
+        .btnSection {
+          z-index: 996;
+  
+          a {
+            font-weight: 300;
+            @include media-lg {
+              font-weight: 500;
+            }
+          }
+        }
+  
+        .testimonialArrowSection {
+          position: absolute;
+          top: 0;
+          left: 0;
+          display: flex;
+          justify-content: space-between;
+          width: 100%;
+          height: 100%;
+  
+          .arrow3 {
+            top: 60%;
+            width: 40px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            background-color: black;
+            padding: 0.6rem;
+            cursor: pointer;
+            transition: all 0.5s;
+            &:hover {
+              background-color: $color3;
+            }
+          }
+        }
+      }
+    }
+  }
+
+ #contactSection{
+    @include section;
+   
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background: $gradient4;
+    color: $white;
+    @include media-lg{
+        flex-direction: row;
+    }
+    .formSection {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        background-color: $gradient4;
+    
+        width: 100%;
+       
+        margin-right: $xsSpacing;
+        padding: $s3;
+        text-align: left;
+        border: 1px solid $darkGray;
+    
+        @include media-lg {
+          max-width: 50%;
+        }
+    
+        .heading {
+          margin: 0;
+          margin-bottom: $s2;
+          text-align: left;
+          font-size: $baseline;
+          font-weight: 400;
+          line-height: 1.3;
+          color: $white;
+          @include media-lg {
+            font-size: $font-4;
+          }
+        }
+        #formDiv {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          margin-top: $font-4;
+    
+          .inputDiv {
+            display: flex;
+            align-items: flex-start;
+            flex-direction: column;
+            width: 100%;
+            margin-bottom: $baseline;
+            #services {
+              background-color: $black;
+              color: $borderGray;
+              cursor: pointer;
+              border-radius:5px; 
+              option {
+                @include media-lg {
+                  font-size: $baseline;
+                }
+              }
+            }
+    
+            label {
+              margin: $s1;
+              text-align: left;
+              font-size: 0.8rem;
+              color: $white;
+              @include media-lg {
+                font-size: $baseline;
+              }
+            }
+            input {
+              padding: .5rem;
+              border-radius:5px; 
+              color: $white !important;
+              font-size: $baseline ;
+            }
+          }
+        }
+        .btn1 {
+          @extend .btn1;
+        }
+      }
+
+      .details{
+       
+        padding: $s4;
+        @include media-lg{
+          padding: unset;
+          margin: auto;
+        }
+        a{
+            margin-top: $s2;
+        }
+
+      }
+ }
+
+// gallery section//
+
+#gallerySection {
+  @include sectionPadding;
+  
+  background: $gradient4;
+  text-align: center;
+  overflow: hidden;
+
+  .content {
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      color: $white;
+
+
+      .heading {
+          color: inherit;
+      }
+
+      p {
+          max-width: 100%;
+          margin-bottom: 0;
+          font-weight: 300;
+      }
+  }
+
+  .loopWrapper {
+      /* Custom Variables */
+      $slider-height: 260px;
+      $number-of-cards: 9;
+      $card-width: 230px;
+      $card-height: 260px;
+      $card-gap: 0;
+      $card-offset: $card-width+$card-gap;
+      $animation-duration: 2.5 * $number-of-cards;
+      $animation-delay: calc($animation-duration / $number-of-cards);
+      $offset-limit: -$card-offset;
+      /* Styles */
+      width: calc(100% + (100px));
+      height: $slider-height;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+
+      @for $i from 1 through $number-of-cards {
+          @keyframes loop {
+              0% {
+                  transform: translateX($card-offset * $number-of-cards);
+              }
+
+              100% {
+                  transform: translateX($offset-limit);
+              }
+          }
+
+          .loopCard {
+              position: absolute;
+              top: 0;
+              left: 0;
+              display: block;
+              width: $card-width;
+              height: $card-height;
+              margin-right: $card-gap;
+
+              &:nth-of-type(#{$i}) {
+                  transform: translateX($card-offset * ($i - 1));
+                  animation: loop #{$animation-duration}s #{($i - $animation-duration) * $animation-delay}s linear infinite;
+              }
+          }
+      }
+  }
+
+  .gallerySlideSection {
+      display: flex;
+      align-items: flex-start;
+      flex-direction: column;
+      margin-top: $xsSpacing;
+      margin-bottom: auto;
+  }
+
+  .card{
+    width: 250px;
+    max-height: 250px;
+    display: flex;
+    flex-direction: column;
+    background-color: $lightGray;
+    padding:$baseline;
+    border-radius: 10px;
+    margin-right: $xsSpacing;
+    pointer-events: none;
+    .imageDiv{
+      width: 200px;
+       height: 200px;
+  overflow: hidden;
+    }
+  }
+}
+
+.thankyousection{
+  height: 100vh;
+}
+
+

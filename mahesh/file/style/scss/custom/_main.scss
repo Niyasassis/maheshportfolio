@@ -1,0 +1,210 @@
+@use "../common/_common" as *;
+
+body {
+  color: $black;
+  background-color: $white;
+
+  //Usage : If the header is fixed, every page should have a top margin//
+  .pageTopSpace {
+    padding-top: 2rem;
+
+    @include media-lg {
+      padding-top: 2rem;
+    }
+  }
+
+  #mainContainer {
+    width: 100%;
+    max-width: $containerMaxWidth;
+    min-height: 100vh;
+    margin: 0 auto;
+    background-color: inherit;
+
+    padding-top: 0;
+
+    @include media-lg {
+     
+    }
+
+    //Header//
+    #headerSection {
+      @include section;
+      position: fixed;
+      top: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      color: $white;
+      background: $gradient4;
+      z-index: 999;
+      //logoSectio
+
+      .logoDiv {
+        width: 3rem;
+        
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        @include media-lg {
+          width: 2rem;
+          margin: 0;
+        }
+        .logo {
+          display: inline-block;
+          width: 2rem;
+        }
+        .logoText{
+          white-space: nowrap;
+          margin-top: 0;
+          margin-left: 5px;
+          display: none;
+          @include media-lg{
+            display: inline-block;
+          }
+        }
+      }
+      .menuSectionIntro{
+        transform: none !important;
+      }
+      .menuSection {
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 100%;
+        height: 100vh;
+        background: $color1;
+        color: $white;
+        transform: translate(-100%);
+        transition: $transition1;
+
+        @include media-lg {
+          position: relative;
+          flex-direction: row;
+          height: auto;
+          background: none;
+          color: $white;
+          transform: none;
+        }
+     
+        .menuIcons {
+          margin: $baseline;
+          transition: $transition1;
+          @include media-lg {
+            padding: $s2;
+            margin: 0;
+          }
+          &:hover{
+          
+            color: $color3;
+          
+        }
+        }
+        .mobileBtn {
+          @include btn;
+          @include lgBtn;
+          display: flex;
+          background: $white;
+          color: $black;
+          @include media-lg {
+            display: none;
+          }
+        }
+      }
+      .btnDiv {
+        display: none;
+        @include media-lg {
+          display: inline-block;
+        }
+        .desktopBtn {
+          margin: auto 0;
+          white-space: nowrap;
+          background: $gradient3;
+          transition: $transition1;
+          &:hover{
+            background: $color2;
+          }
+
+        }
+      }
+.logoTextMOb{
+  margin-top: 0;
+  display: block;
+  @include media-lg{
+    display: none;
+   
+  }
+}
+      //menuicon
+      .roundIcon {
+        display: flex;
+        justify-content: center;
+
+        flex-direction: column;
+        width: 30px;
+        height: 30px;
+        margin: $s2 0;
+
+        padding: 4px;
+        border: 2px solid $white;
+        border-radius: $s5;
+        transition: $transition1;
+
+        z-index: 999;
+        @include media-lg {
+          display: none;
+        }
+
+        span {
+          display: flex;
+          width: 100%;
+          height: 100%;
+          border: 2px solid $white;
+          border-radius: $s5;
+          cursor: pointer;
+
+          .dotIntro {
+            display: none !important;
+          }
+
+          .dot {
+            width: 5px;
+            height: 5px;
+            margin: auto;
+            border: 1px solid $white;
+            border-radius: $s5;
+            background: $white;
+            transition: $transition3;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+//footer
+
+#footerSection{
+  @include section;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: $s2;
+  background: $gradient4;
+  color: $white;
+  .text{
+    font-size: $fontSmall;
+    color: $textGray;
+  }
+  .developer{
+      color: $color2;
+  }
+
+
+}
